@@ -29,9 +29,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun getAll(): LiveData<List<Todo>> = database.TodoDao().getAll()
 
     //  coroutine 에서만 동작하도록 suspend fun 으로 선언함.
-    fun insert(todo: String) {
+    fun insert(title: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            database.TodoDao().insert(Todo(todo))
+            database.TodoDao().insert(Todo(title))
 
         }
     }
